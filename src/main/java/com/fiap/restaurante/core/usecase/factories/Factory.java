@@ -1,7 +1,7 @@
-package com.fiap.restaurante.usecase.factory;
+package com.fiap.restaurante.core.factories;
 
+import com.fiap.restaurante.core.usecase.dto.RestauranteDTO;
 import com.fiap.restaurante.domain.Restaurante;
-import com.fiap.restaurante.usecase.dtos.RestauranteDTO;
 
 public class Factory {
     public static RestauranteDTO buildFrom(Restaurante restaurante) {
