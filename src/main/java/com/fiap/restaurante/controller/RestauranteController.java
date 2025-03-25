@@ -1,36 +1,39 @@
 package com.fiap.restaurante.controller;
 
 
-import com.fiap.restaurante.core.CadastraRestaurante;
-import com.fiap.restaurante.core.usecase.dto.RestauranteDTO;
+import com.fiap.restaurante.controller.json.RestauranteJson;
+import com.fiap.restaurante.core.CadastraRestauranteUseCase;
+import com.fiap.restaurante.core.domain.Restaurante;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequestMapping("/restaurante")
 public class RestauranteController {
 
     @Autowired
-    private CadastraRestaurante cadastraRestaurante;
+    private CadastraRestauranteUseCase cadastraRestauranteUseCase;
 
-    @PostMapping("/cadastrar")
-    public RestauranteDTO cadastrarRestaurante(
-            @RequestBody String nome,
-            @RequestBody String localizacao,
-            @RequestBody String tipoDeCozinha,
-            @RequestBody String horarioDeFuncionamento,
-            @RequestBody int capacidade) {
-        var dto = new RestauranteDTO(
-                null,
-                nome,
-                localizacao,
-                tipoDeCozinha,
-                horarioDeFuncionamento,
-                capacidade
+    @PostMapping
+    public Restaurante cadastrarRestaurante(@Valid @RequestBody RestauranteJson restauranteJson) {
+
+        return cadastraRestauranteUseCase.cadastraRestaurante(mapToDomain(restauranteJson));
+    }
+
+    private Restaurante mapToDomain(RestauranteJson restauranteJson) {
+        return new Restaurante(
+                restauranteJson.getId(),
+                restauranteJson.getNome(),
+                restauranteJson.getLocalizacao(),
+                restauranteJson.getTipoDeCozinha(),
+                restauranteJson.getHorarioDeAbertura(),
+                restauranteJson.getHorarioDeFechamento(),
+                restauranteJson.getCapacidade()
         );
-
-        return cadastraRestaurante.cadastraRestaurante(dto);
     }
 }

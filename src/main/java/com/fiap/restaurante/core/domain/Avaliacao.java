@@ -1,24 +1,13 @@
 package com.fiap.restaurante.core.domain;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name="avaliacao")
+@Getter
 public class Avaliacao {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long restauranteId;
     private Long clienteId;

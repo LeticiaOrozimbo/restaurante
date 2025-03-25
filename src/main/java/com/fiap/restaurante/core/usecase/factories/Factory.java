@@ -1,28 +1,30 @@
 package com.fiap.restaurante.core.usecase.factories;
 
-import com.fiap.restaurante.core.usecase.dto.RestauranteDTO;
 import com.fiap.restaurante.core.domain.Restaurante;
+import com.fiap.restaurante.gateway.database.entity.RestauranteEntity;
 
 public class Factory {
-    public static RestauranteDTO buildFrom(Restaurante restaurante) {
-        return new RestauranteDTO(
+    public static Restaurante buildFrom(RestauranteEntity restauranteEntity) {
+        return new Restaurante(
+                restauranteEntity.getId(),
+                restauranteEntity.getNome(),
+                restauranteEntity.getLocalizacao(),
+                restauranteEntity.getTipoDeCozinha(),
+                restauranteEntity.getHorarioDeAbertura(),
+                restauranteEntity.getHorarioDeFechamento(),
+                restauranteEntity.getCapacidade()
+        );
+    }
+
+    public static RestauranteEntity buildFrom(Restaurante restaurante) {
+        return new RestauranteEntity(
                 restaurante.getId(),
                 restaurante.getNome(),
                 restaurante.getLocalizacao(),
                 restaurante.getTipoDeCozinha(),
-                restaurante.getHorarioDeFuncionamento(),
+                restaurante.getHorarioDeAbertura(),
+                restaurante.getHorarioDeFechamento(),
                 restaurante.getCapacidade()
-        );
-    }
-
-    public static Restaurante buildFrom(RestauranteDTO dto) {
-        return new Restaurante(
-                dto.id(),
-                dto.nome(),
-                dto.localizacao(),
-                dto.tipoDeCozinha(),
-                dto.horarioDeFuncionamento(),
-                dto.capacidade()
         );
     }
 }

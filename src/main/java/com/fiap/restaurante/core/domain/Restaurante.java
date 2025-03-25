@@ -1,25 +1,20 @@
 package com.fiap.restaurante.core.domain;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name="restaurante")
+@Getter
 public class Restaurante {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String localizacao;
     private String tipoDeCozinha;
-    private String horarioDeFuncionamento;
+    private String horarioDeAbertura;
+    private String horarioDeFechamento;
     private int capacidade;
+
+    public void atribuirId(Long id) {
+        this.id = id;
+    }
 }
