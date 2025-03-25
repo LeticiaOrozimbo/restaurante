@@ -2,6 +2,7 @@ package com.fiap.restaurante.core;
 
 import com.fiap.restaurante.core.usecase.factories.Factory;
 import com.fiap.restaurante.core.usecase.dto.RestauranteDTO;
+import com.fiap.restaurante.gateway.repository.RestauranteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

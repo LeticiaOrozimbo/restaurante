@@ -1,4 +1,4 @@
-package com.fiap.restaurante.core;
+package com.fiap.restaurante.gateway.repository;
 
 import com.fiap.restaurante.core.domain.Restaurante;
 import org.springframework.data.jpa.repository.JpaRepository;
