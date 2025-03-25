@@ -1,4 +1,4 @@
-package com.fiap.restaurante.domain;
+package com.fiap.restaurante.core.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

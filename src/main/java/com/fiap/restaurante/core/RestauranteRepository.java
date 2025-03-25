@@ -1,6 +1,6 @@
-package com.fiap.restaurante.usecase;
+package com.fiap.restaurante.core;
 
-import com.fiap.restaurante.domain.Restaurante;
+import com.fiap.restaurante.core.domain.Restaurante;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

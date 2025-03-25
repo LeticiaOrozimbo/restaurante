@@ -1,7 +1,7 @@
-package com.fiap.restaurante.usecase;
+package com.fiap.restaurante.core;
 
-import com.fiap.restaurante.usecase.dtos.RestauranteDTO;
-import com.fiap.restaurante.usecase.factory.Factory;
+import com.fiap.restaurante.core.usecase.factories.Factory;
+import com.fiap.restaurante.core.usecase.dto.RestauranteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

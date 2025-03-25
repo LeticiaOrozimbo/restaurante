@@ -1,7 +1,8 @@
 package com.fiap.restaurante.controller;
 
-import com.fiap.restaurante.usecase.CadastraRestaurante;
-import com.fiap.restaurante.usecase.dtos.RestauranteDTO;
+
+import com.fiap.restaurante.core.CadastraRestaurante;
+import com.fiap.restaurante.core.usecase.dto.RestauranteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
