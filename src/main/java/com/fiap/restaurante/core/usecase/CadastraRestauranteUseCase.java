@@ -1,11 +1,10 @@
-package com.fiap.restaurante.core;
+package com.fiap.restaurante.core.usecase;
 
 import com.fiap.restaurante.core.domain.Restaurante;
-import com.fiap.restaurante.core.usecase.factories.Factory;
+import com.fiap.restaurante.core.usecase.dto.RestauranteDTO;
+import com.fiap.restaurante.core.usecase.factories.RestauranteFactory;
 import com.fiap.restaurante.gateway.RestauranteGateway;
-import com.fiap.restaurante.gateway.database.repository.RestauranteRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,9 +13,10 @@ public class CadastraRestauranteUseCase {
 
     private final RestauranteGateway restauranteGateway;
 
-    public Restaurante cadastraRestaurante(Restaurante restaurante) {
+    public RestauranteDTO cadastraRestaurante(RestauranteDTO restauranteDTO) {
+        var restaurante = RestauranteFactory.buildModelFromDTO(restauranteDTO);
         var id = restauranteGateway.criar(restaurante);
         restaurante.atribuirId(id);
-        return restaurante;
+        return RestauranteFactory.buildDTOFromModel(restaurante);
     }
 }

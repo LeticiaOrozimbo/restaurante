@@ -21,7 +21,7 @@ public class ReservaEntity {
     private Long id;
     private Long restauranteId;
     private Long clienteId;
-    private LocalDateTime dataHora;
+    private LocalDateTime horarioReserva;
     private String status;
     private int numeroDePessoas;
 }

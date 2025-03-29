@@ -1,23 +1,16 @@
-package com.fiap.restaurante.gateway.database.entity;
+package com.fiap.restaurante.core.usecase.dto;
 
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.chrono.ChronoLocalDateTime;
 
-@Getter
-@Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Builder
-@Entity
-@Table(name="restaurante")
-public class RestauranteEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Getter
+public class RestauranteDTO {
     private Long id;
     private String nome;
     private String localizacao;

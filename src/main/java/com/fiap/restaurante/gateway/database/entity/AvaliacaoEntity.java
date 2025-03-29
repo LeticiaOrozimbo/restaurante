@@ -1,10 +1,8 @@
 package com.fiap.restaurante.gateway.database.entity;
 
+import com.fiap.restaurante.core.domain.Restaurante;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -13,6 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 @Table(name="avaliacao")
 public class AvaliacaoEntity {
 

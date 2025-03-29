@@ -1,12 +1,13 @@
 package com.fiap.restaurante.controller;
 
 
-import com.fiap.restaurante.controller.json.RestauranteJson;
-import com.fiap.restaurante.core.CadastraRestauranteUseCase;
+import com.fiap.restaurante.core.usecase.dto.RestauranteDTO;
+import com.fiap.restaurante.core.usecase.CadastraRestauranteUseCase;
 import com.fiap.restaurante.core.domain.Restaurante;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,20 +21,8 @@ public class RestauranteController {
     private CadastraRestauranteUseCase cadastraRestauranteUseCase;
 
     @PostMapping
-    public Restaurante cadastrarRestaurante(@Valid @RequestBody RestauranteJson restauranteJson) {
-
-        return cadastraRestauranteUseCase.cadastraRestaurante(mapToDomain(restauranteJson));
-    }
-
-    private Restaurante mapToDomain(RestauranteJson restauranteJson) {
-        return new Restaurante(
-                restauranteJson.getId(),
-                restauranteJson.getNome(),
-                restauranteJson.getLocalizacao(),
-                restauranteJson.getTipoDeCozinha(),
-                restauranteJson.getHorarioDeAbertura(),
-                restauranteJson.getHorarioDeFechamento(),
-                restauranteJson.getCapacidade()
-        );
+    public ResponseEntity<RestauranteDTO> cadastrarRestaurante(@Valid @RequestBody RestauranteDTO restauranteDTO) {
+        restauranteDTO = cadastraRestauranteUseCase.cadastraRestaurante(restauranteDTO);
+        return ResponseEntity.status(HttpStatusCode.valueOf(201)).body(restauranteDTO);
     }
 }

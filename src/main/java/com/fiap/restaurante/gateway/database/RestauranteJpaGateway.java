@@ -27,7 +27,20 @@ public class RestauranteJpaGateway implements RestauranteGateway {
         }
     }
 
+    @Override
+    public RestauranteEntity buscar(Long id) {
+        return restauranteRepository.findById(id).orElseThrow();
+    }
+
     private RestauranteEntity mapToEntity(Restaurante restaurante) {
-        return RestauranteEntity.builder().build();
+        return new RestauranteEntity(
+                restaurante.getId(),
+                restaurante.getNome(),
+                restaurante.getLocalizacao(),
+                restaurante.getTipoDeCozinha(),
+                restaurante.getHorarioDeAbertura(),
+                restaurante.getHorarioDeFechamento(),
+                restaurante.getCapacidade()
+        );
     }
 }

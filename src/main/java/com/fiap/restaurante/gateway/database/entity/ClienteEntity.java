@@ -20,7 +20,5 @@ public class ClienteEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private LocalDateTime dataDaReserva;
     private String telefone;
-
 }

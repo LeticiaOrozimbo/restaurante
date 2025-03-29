@@ -3,6 +3,10 @@ package com.fiap.restaurante.core.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.chrono.ChronoLocalDateTime;
+
 @AllArgsConstructor
 @Getter
 public class Restaurante {
@@ -10,11 +14,16 @@ public class Restaurante {
     private String nome;
     private String localizacao;
     private String tipoDeCozinha;
-    private String horarioDeAbertura;
-    private String horarioDeFechamento;
+    private LocalTime horarioDeAbertura;
+    private LocalTime horarioDeFechamento;
     private int capacidade;
 
     public void atribuirId(Long id) {
         this.id = id;
+    }
+
+    public boolean estaAbertoNoHorarioSolicitado(LocalDateTime horarioReserva) {
+        return horarioReserva.toLocalTime().isAfter(horarioDeAbertura) &&
+                horarioReserva.toLocalTime().isBefore(horarioDeFechamento);
     }
 }

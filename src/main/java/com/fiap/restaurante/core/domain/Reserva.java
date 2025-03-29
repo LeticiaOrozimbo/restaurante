@@ -9,9 +9,13 @@ import java.time.LocalDateTime;
 @Getter
 public class Reserva {
     private Long id;
-    private Long restauranteId;
-    private Long clienteId;
-    private LocalDateTime dataHora;
-    private String status;
+    private Restaurante restaurante;
+    private Cliente cliente;
+    private LocalDateTime horarioReserva;
+    private String status; // TODO: Transformar num enum
     private int numeroDePessoas;
+
+    public void atribuirId(Long id) {
+        this.id = id;
+    }
 }
